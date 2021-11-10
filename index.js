@@ -7,6 +7,8 @@
         + If a plane lands, its `isFlying` property is set to false.
 */
 
+const { functionExpression } = require("@babel/types");
+
 // EXAMPLE SOLUTION CODE:
 function Airplane(name) {
   this.name = name;
@@ -39,9 +41,27 @@ Airplane.prototype.land = function () {
         + It should return a string with `name` and `age`. Example: "Mary, 50"
 */
 
-function Person() {
-  
+function Person (name, age) {
+  this.name = name;
+  this.age = age;
+  this.stomach = [];
 }
+Person.prototype.eat = function(food) {
+  if (this.stomach.length < 10) {
+    this.stomach.push(food);
+  }
+}
+Person.prototype.poop = function() {
+  return this.stomach = [];
+}
+Person.prototype.toString = function(){
+  return `${this.name}, ${this.age}`
+}
+const kevin = new Person ('Kevin', 27)
+// console.log(kevin.toString());
+// console.log(kevin.eat("Soba"));
+// console.log(kevin.stomach);
+// console.log(kevin.poop());
 
 
 
@@ -63,9 +83,20 @@ function Person() {
         + The `drive` method should return a string "I ran out of fuel at x miles!" x being `odometer`.
 */
 
-function Car() {
-  
+function Car(model, milesPerGallon) {
+  this.model = model;
+  this.milesPerGallon = milesPerGallon;
+  this.tank = 0;
+  this.odometer = 0;
 }
+Car.prototype.fill = function(gallons) {
+  this.tank = this.tank + gallons;
+}
+
+// const newCar = new Car ('Honda', 27);
+// console.log(newCar.fill(20));
+// console.log(newCar.tank);
+
 
 
 /*
@@ -75,8 +106,13 @@ function Car() {
     - Besides the methods on Person.prototype, babies have the ability to `.play()`:
         + Should return a string "Playing with x", x being the favorite toy.
 */
-function Baby() {
- 
+function Baby(name, age, favoriteToy) {
+  Person.call(this, name, age);
+  this.favoriteToy = favoriteToy;
+}
+Baby.prototype = Object.create(Person.prototype);
+Baby.prototype.play = function () {
+  return `Playing with ${this.favoriteToy}`
 }
 
 

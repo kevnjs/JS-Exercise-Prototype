@@ -119,10 +119,10 @@ Baby.prototype.play = function () {
 /* 
   TASK 4
   In your own words explain the four principles for the "this" keyword below:
-  1. 
-  2. 
-  3. 
-  4. 
+  1. Window binding, which is not giving any context to this, which will only return it's global object or undefined.
+  2. Implicit binding is when this is pointing to whatever is left of it when the function is invoked.
+  3. Explicit binding is binding it to where we tell it to, such as in a .call and pass in the argument we want this to reference to.
+  4. New Binding is used with constructor functions, and this just refers to the object created with the the constructor function
 */
 
 
